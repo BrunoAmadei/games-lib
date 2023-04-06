@@ -1,20 +1,26 @@
-const ApiKey = '8b04ba9a7cbc46ae93894d6a98ed2c29'
-const ApiUrl = 'https://api.rawg.io/api'
+import axios from 'axios';
+
+const ApiKey = '8b04ba9a7cbc46ae93894d6a98ed2c29';
+const ApiUrl = 'https://api.rawg.io/api';
 
 const fetchApi = async (endpoint) => {
-    const req = await fetch(`${ApiUrl}${endpoint}`)
-    const json = await req.json()
-    return json
-}
+    try {
+      const response = await axios.get(`${ApiUrl}${endpoint}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error: ${error.message}`);
+    }
+  };
+  
 
 export default {
-    getHomeList: async () => {
-        return [
-            {
-                slug: 'game',
-                title: 'Games',
-                item: await fetchApi(`/games?key=${ApiKey}`)
-            }
-        ]
-    }
-}
+  getGamesList: async () => {
+    return [
+      {
+        slug: 'game-list',
+        title: 'Games',
+        items: await fetchApi(`/games?key=${ApiKey}`),
+      },
+    ];
+  },
+};
