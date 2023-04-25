@@ -6,7 +6,8 @@ const ApiUrl = 'https://api.rawg.io/api';
 const fetchApi = async (endpoint) => {
     try {
       const response = await axios.get(`${ApiUrl}${endpoint}`);
-      return response.data;
+      const result = response.data
+      return result;
     } catch (error) {
       console.error(`Error: ${error.message}`);
     }
