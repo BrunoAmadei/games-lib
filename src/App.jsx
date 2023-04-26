@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     const loadGames = async () => {
-      const games = await config.getGames();
+      const games = await config.getUpComingGames();
       console.log(games)
       setGames(games); // Acessando a lista de jogos
     };
