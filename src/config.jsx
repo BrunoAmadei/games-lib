@@ -18,16 +18,11 @@ const fetchApi = async (endpoint) => {
 
 
 export default {
-  getGamesList: async () => {
-    return [
-      {
-        slug: 'game-list',
-        title: 'Games',
-        items: await fetchApi(`/games?key=${ApiKey}`),
-      },
-    ];
+  getGames: async () => {
+    const response = await fetchApi(`/games?key=${ApiKey}`);
+    return response.results;
   },
-  getToBeReleased: async () => {
+  getUpComingGames: async () => {
     return [
       {
         slug: 'beReleased',

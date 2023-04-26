@@ -6,9 +6,9 @@ function App() {
 
   useEffect(() => {
     const loadGames = async () => {
-      const games = await config.getGamesList();
-      console.log(games[0].items.results)
-      setGames(games[0].items.results); // Acessando a lista de jogos
+      const games = await config.getGames();
+      console.log(games)
+      setGames(games); // Acessando a lista de jogos
     };
 
     loadGames();
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-      {games.map((game) => (
+      {games.map((game) => (       
         <div key={game.id}>
           <h2>{game.name}</h2>
           <img src={game.background_image} alt={game.name} width={300}/>
