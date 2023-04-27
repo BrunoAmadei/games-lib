@@ -22,7 +22,7 @@ export default {
     return response.results;
   },
   getUpComingGames: async () => {
-    const response = await fetchApi(`/games?key=${ApiKey}&dates=${currentYear}-01-01,${nextYear}-01-01&ordering=-released`)
+    const response = await fetchApi(`/games?key=${ApiKey}&dates=${currentYear}-01-01,${nextYear}-01-01&ordering=-released`)//lançamentos ano atual e prox
     return response.results;
   },
   getImage: async (game,height) => {
