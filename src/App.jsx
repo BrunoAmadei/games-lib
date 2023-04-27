@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     const loadGames = async () => {
       const games = await config.getUpComingGames();
-      console.log(games)
+      //console.log(games)
       setGames(games); // Acessando a lista de jogos
     };
 
@@ -16,12 +16,18 @@ function App() {
 
   return (
     <div>
-      {games.map((game) => (       
-        <div key={game.id}>
-          <h2>{game.name}</h2>
-          <img src={game.background_image} alt={game.name} width={300}/>
-        </div>
-      ))}
+      {games.map((game) => {
+        console.log(game)
+        return (
+          <div key={game.id}>
+            <h2>{game.name}</h2>
+            <img 
+            src={config.getImage(game, "500")}
+              onError={(e) => console.log(`Erro ao carregar imagem: ${e.target.src}`)}
+            />
+          </div>
+        )
+      })}
     </div>
   );
 }
