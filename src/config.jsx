@@ -25,12 +25,4 @@ export default {
     const response = await fetchApi(`/games?key=${ApiKey}&dates=${currentYear}-01-01,${nextYear}-01-01&ordering=-released`)//lançamentos ano atual e prox
     return response.results;
   },
-  getImage: async (game,height) => {
-    if (!game.background_image) {
-      // retorna uma imagem padrão ou null
-      return null;
-    }
-    const imgCode = game.background_image.split('/').pop().split('.')[0];
-    return `https://media.rawg.io/media/games/${imgCode}/${imgCode}.jpg?height=${height}`
-  }
 };

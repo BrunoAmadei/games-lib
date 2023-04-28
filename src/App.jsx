@@ -6,12 +6,12 @@ function App() {
 
   useEffect(() => {
     const loadGames = async () => {
-      const games = await config.getUpComingGames();
-      //console.log(games)
-      setGames(games); // Acessando a lista de jogos
-    };
+      const games = await config.getGames();
+      setGames(games);
+     };
 
     loadGames();
+
   }, []);
 
   return (
@@ -21,9 +21,9 @@ function App() {
         return (
           <div key={game.id}>
             <h2>{game.name}</h2>
-            <img 
-            src={config.getImage(game, "500")}
-              onError={(e) => console.log(`Erro ao carregar imagem: ${e.target.src}`)}
+            <img
+              src={game.background_image}
+              className="game-img" 
             />
           </div>
         )
